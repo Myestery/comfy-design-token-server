@@ -94,7 +94,11 @@ app.post('/webhook/figma-tokens', async (req, res) => {
         const result = await workflow.processUpdate(css);
 
         if (result.success) {
-          console.log(`\n✅ Update complete: ${result.prUrl}\n`);
+          if (result.noChanges) {
+            console.log(`\n✅ Update complete: No changes detected in design tokens\n`);
+          } else {
+            console.log(`\n✅ Update complete: ${result.prUrl}\n`);
+          }
         } else {
           console.error(`\n❌ Update failed: ${result.error}\n`);
         }

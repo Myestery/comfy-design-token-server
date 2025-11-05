@@ -104,6 +104,17 @@ export class TokenUpdateWorkflow {
       );
       console.log(`   Final CSS: ${mergedCSS.length} characters`);
 
+      // Check if there are any changes
+      if (mergedCSS === oldCSS) {
+        console.log('\n⚠️  No changes detected in CSS. Skipping commit and PR creation.');
+        console.log('\n=== Workflow Complete (No Changes) ===\n');
+        return {
+          success: true,
+          noChanges: true,
+          message: 'No changes detected in design tokens',
+        };
+      }
+
       // Step 7: Update file in GitHub
       console.log('\n7. Updating file in GitHub...');
       await this.github.updateFile(
