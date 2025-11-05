@@ -1,0 +1,20 @@
+{
+  "name": "comfy-design-token-server",
+  "version": "1.0.0",
+  "description": "Server to receive Figma design tokens and sync them to GitHub via Claude AI",
+  "main": "src/server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node src/server.js",
+    "dev": "node --watch src/server.js"
+  },
+  "keywords": ["figma", "design-tokens", "github", "claude"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "@anthropic-ai/sdk": "^0.20.0",
+    "@octokit/rest": "^20.0.2",
+    "dotenv": "^16.4.5"
+  }
+}
